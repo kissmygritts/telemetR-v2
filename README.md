@@ -10,5 +10,6 @@ This current iteration will be different. After talking with many orgainizations
 1. Write & Read data from SQLite database
 1. Create a package
 1. Write as [Shiny app](http://shiny.rstudio.com/) or [RStudio Addin](https://rstudio.github.io/rstudio-extensions/rstudio_addins.html)
-  * documentation site
-1. Methods to extend the functionality
+    * documentation site
+1. Methods to extend the functionality (a plugin system)
+1. Build and deploy as a SaaS (maybe?)
