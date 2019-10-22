@@ -13,3 +13,7 @@ This current iteration will be different. After talking with many orgainizations
     * documentation site
 1. Methods to extend the functionality (a plugin system)
 1. Build and deploy as a SaaS (maybe?)
+
+## File Structure
+
+Sanbox: working out the code to later be encapsulated into functions, the package, and later the Shiny app.

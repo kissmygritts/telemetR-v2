@@ -91,6 +91,11 @@ RSQLite::dbListTables(db_conn)
 RSQLite::dbExecute(conn = db_conn, statement = sql_list[[2]])
 RSQLite::dbListTables(db_conn)
 
+### how to run as a transaction
+dbBegin(db_conn)
+rs <- dbSendQuery(db_conn, sql_list[[1]])
+dbCommit(db_conn)
+
 ### bootstrap database function
 bootstrap_telemetr <- function (db_path = '~/.telemetr/telemetr-db.sqlite3') {
   
@@ -102,14 +107,13 @@ bootstrap_telemetr <- function (db_path = '~/.telemetr/telemetr-db.sqlite3') {
   ### connect to database
   db_conn <- DBI::dbConnect(RSQLite::SQLite(), db_path)
   
-  ### begin sql transaction
-  
-  
   ### loop over bootstrap sql
-  rs <- lapply(sql_list, function (x) {
+  lapply(sql_list, function (x) {
     RSQLite::dbExecute(db_conn, x)
+    RSQLite::dbGetRowsAffected(rs)
   })
   
+  ### disconnect
   RSQLite::dbDisconnect(db_conn)
 }
 
