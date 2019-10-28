@@ -110,7 +110,7 @@ bootstrap_telemetr <- function (db_path = '~/.telemetr/telemetr-db.sqlite3') {
   ### loop over bootstrap sql
   lapply(sql_list, function (x) {
     RSQLite::dbExecute(db_conn, x)
-    RSQLite::dbGetRowsAffected(rs)
+    # RSQLite::dbGetRowsAffected(rs)
   })
   
   ### disconnect
@@ -122,5 +122,5 @@ create_telemetr_db()
 bootstrap_telemetr()
 
 db_conn <- DBI::dbConnect(RSQLite::SQLite(), db_path)
-dbListTables(db_conn)
+DBI::dbListTables(db_conn)
 
